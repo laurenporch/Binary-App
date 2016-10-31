@@ -32,11 +32,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.what-is-binary', {
+    url: '/what-is-binary',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/what-is-binary.html'
       }
     }
   })
