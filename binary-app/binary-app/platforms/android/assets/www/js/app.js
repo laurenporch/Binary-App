@@ -50,7 +50,51 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: 'templates/counting-in-binary.html'
         }
       }
-    })
+  })
+
+// State for the Decimal to Binary lesson/html page.
+  .state('app.decimal-to-binary', {
+      url: '/decimal-to-binary',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/decimal-to-binary.html'
+          }
+      }
+  })
+
+// State for the Binary to Decimal lesson/html page.
+  .state('app.binary-to-decimal', {
+      url: '/binary-to-decimal',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/binary-to-decimal.html'
+          }
+      }
+  })
+
+// State for the Binary, Octal, Hexadecimal conversion lesson/html page.
+  .state('app.binary-octal-hexadecimal', {
+      url: '/binary-octal-hexadecimal',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/binary-octal-hexadecimal.html'
+          }
+      }
+  })
+
+// State for the One's and Two's Complement lesson/html page.
+  .state('app.ones-and-twos', {
+      url: '/ones-and-twos',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/ones-and-twos.html'
+          }
+      }
+  })
+
+
+/* Keeping this in case we need to make controllers.
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
@@ -69,7 +113,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
-  });
+  })
+  */
+
+  ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/what-is-binary');
 });
