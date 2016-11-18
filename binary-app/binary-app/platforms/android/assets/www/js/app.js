@@ -32,6 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+// State for the What is Binary lesson/html page.
   .state('app.what-is-binary', {
     url: '/what-is-binary',
     views: {
@@ -41,11 +42,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+// State for the Counting in Binary lesson/html page.
+  .state('app.counting-in-binary', {
+      url: '/counting-in-binary',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/counting-in-binary.html'
         }
       }
     })
