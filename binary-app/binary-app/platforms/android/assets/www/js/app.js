@@ -41,6 +41,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.select options3', {
+      url: '/select options3',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/select options3.html'
+          }
+      }
+  })
+
   .state('app.browse', {
       url: '/browse',
       views: {
