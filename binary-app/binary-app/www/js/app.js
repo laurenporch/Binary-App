@@ -93,11 +93,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
 // State for calculator/converter.
-     .state('app.select options3', {
-         url: '/select options3',
+     .state('app.select-options3', {
+         url: '/select-options3',
          views: {
              'menuContent': {
-                 templateUrl: 'templates/select options3.html'
+                 templateUrl: 'templates/select-options3.html'
              }
          }
      })

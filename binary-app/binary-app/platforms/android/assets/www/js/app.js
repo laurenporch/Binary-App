@@ -92,6 +92,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
   })
 
+// State for calculator/converter.
+     .state('app.select-options3', {
+         url: '/select-options3',
+         views: {
+             'menuContent': {
+                 templateUrl: 'templates/select-options3.html'
+             }
+         }
+     })
 
 /* Keeping this in case we need to make controllers.
 
