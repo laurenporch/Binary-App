@@ -1,5 +1,76 @@
 <ion-view view-title="Counting in Binary">
   <ion-content>
-    <h1>How do you count in binary?</h1>
+      <div class="has-header padding">
+          <h1>How do you count in binary?</h1>
+          Counting in binary isn't hard, but it takes a little getting used to since it is different from base<sub>10</sub>. In base<sub>10</sub> (what we
+          humans normally use), we count from 0 to 9 because those are the digits we have. As we all know, the next number is 10. We
+          increase the left digit by one and send the right digit back to the "beginning". A good way to see this in action is when you
+          write 0 - 9 in the following way.
+          <br /><br />
+          <center>
+              0 = 00
+              <br />
+              1 = 01
+              <br />
+              2 = 02
+              <br />
+              ...
+              <br />
+              9 = 09
+          </center>
+          <br />
+          9 is the highest single digit possible in base<sub>10</sub> (remember, base<sub>10</sub> uses the digits 0 - 9). So, when we want to get one more
+          than 9, we increment the left digit (which has been 0 this whole time) by one, and we return the right digit to 0 and begin
+          counting up to 9 again.
+          <br /><br />
+          <center>
+              10
+              <br />
+              11
+              <br />
+              12
+              <br />
+              ...
+          </center>
+          <br />
+          This incrementing scheme can be seen again with 100:
+          <br />
+          001, 002, 003, ..., 097, 098, 099, 100, 101, 102
+          <br />
+          As we can see from these examples, counting in base<sub>10</sub> is just incrementing the right digit to the maximum value it 
+          can be and then incrementing the left digit once and resetting the right digit to the minimum value it can be. Base<sub>10</sub> 
+          counts using the digits 0 - 9 and base<sub>2</sub> counts using the digits 0 - 1. So how do you think we count in 
+          base<sub>2</sub>? I'll show you the base 10 numbers for comparison.
+          <br /><br />
+          <div class="row">
+              <div class="col col-25 col-offset-25">Base<sub>10</sub></div>
+              <div class="col col-25">Base<sub>2</sub></div>
+          </div>
+          <div class="row">
+              <div class="col col-25 col-offset-25">00</div>
+              <div class="col col-25">000</div>
+          </div>
+          <div class="row">
+              <div class="col col-25 col-offset-25">01</div>
+              <div class="col col-25">001</div>
+          </div>
+          <div class="row">
+              <div class="col col-25 col-offset-25">02</div>
+              <div class="col col-25">010</div>
+          </div>
+          <div class="row">
+              <div class="col col-25 col-offset-25">03</div>
+              <div class="col col-25">011</div>
+          </div>
+          <div class="row">
+              <div class="col col-25 col-offset-25">04</div>
+              <div class="col col-25">100</div>
+          </div>
+          <br />
+          And so on...
+          <br />
+          Do you see the pattern? Base<sub>2</sub> only has two digits (0 and 1) to count with, so every other number (the even numbers) 
+          resets one or more of the digits on the right.
+      </div>
   </ion-content>
 </ion-view>
