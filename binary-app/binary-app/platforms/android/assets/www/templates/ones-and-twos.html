@@ -1,5 +1,211 @@
 <ion-view view-title="One's and Two's Complement">
     <ion-content>
-        <h1>Can you have a negative number in binary?</h1>
+        <div class="has-header padding">
+            <h1>Can you have a negative number in binary?</h1>
+            Congratulations! You've learned the basics of counting and converting with binary numbers!
+            <br /><br />
+            So, what's next?
+            <br /><br />
+            The logical step now would be to address the idea of negative numbers. True, you could just slap a "-" in front of 
+            a binary digit and to you that might make sense, but to a computer not so much. How are you supposed to indicate 
+            "-" when all you have is on (1) or off (0) to work with?
+            <br /><br />
+            The binary numbers we've worked with so far have been what we call "unsigned", meaning they are all positive. 
+            To represent negative numbers, we have to use "signed" binary numbers. There are three different forms of signed 
+            binary: signed, one's complement, and two's complement.
+            <br /><br />
+            The first form is just called "signed". This form of binary says to take the leftmost bit as the sign bit, and 
+            <i>not as a number</i>. A leftmost bit of 0 means the number is positive and 1 means the number is negative.
+            <br /><br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">010</div>
+                <div class="col">2</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (+)</div>
+                <div class="col">010</div>
+                <div class="col">2</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (-)</div>
+                <div class="col">110</div>
+                <div class="col">-2</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">010011101</div>
+                <div class="col">157</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (+)</div>
+                <div class="col">010011101</div>
+                <div class="col">157</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (-)</div>
+                <div class="col">110011101</div>
+                <div class="col">-157</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">101</div>
+                <div class="col">5</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (+)</div>
+                <div class="col"><mark>0</mark>101</div>
+                <div class="col">5</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Signed (-)</div>
+                <div class="col">1101</div>
+                <div class="col">-5</div>
+            </div>
+            <br />
+            Notice that in the last row we had to add a preceding digit to indicate the sign. You can only do this if you are not 
+            limited to a certain number of bits (digits) in the binary number. For example, if you only had 8 bits (8 digits, 
+            called a byte) to work with and your unsigned number was 10000001, then you would not be able to represent it in 
+            signed form. However, this makes it easy to know if a number is negative or not if you know it is in signed form, as you 
+            can just look at the first bit. Signed binary is then easily changed between positive and negative by changing the 
+            sign bit (the leftmost digit) between 0 and 1.
+            <br /><br />
+            One's complement is the next method, and it sets up the foundations for two's complement. One's complement takes 
+            the binary number and flips all of the bits (digits) to their opposite.
+            <br /><br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">101</div>
+                <div class="col">5</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (+)</div>
+                <div class="col"><mark>0</mark>101</div>
+                <div class="col">5</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (-)</div>
+                <div class="col">1010</div>
+                <div class="col">-5</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">0011101</div>
+                <div class="col">29</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (+)</div>
+                <div class="col">0011101</div>
+                <div class="col">29</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (-)</div>
+                <div class="col">1100010</div>
+                <div class="col">-29</div>
+            </div>
+            <br />
+            Notice that in the first row of binary numbers we had to add a preceding zero. This is because one's complement 
+            form has the same needs as regular signed form: the first bit always indicates the sign of the number. A 0 means 
+            it is positive and a 1 means it is negative. One's complement can also be easily switched between positive and 
+            negative by flipping all the bits. (i.e. to go from negative to positive, or positive to negative, just flip the bits).
+            <br /><br />
+            One's complement also has a special case: there is a positive zero and a negative zero. These should usually be 
+            handled differently when they appear, which is one of the reasons one's complement is not used very often.
+            <br /><br />
+            <div class="row">
+                <div class="col col-offset-25 col-25">0000</div>
+                <div class="col col-25">+0</div>
+            </div>
+            <div class="row">
+                <div class="col col-offset-25 col-25">1111</div>
+                <div class="col col-25">-0</div>
+            </div>
+            <br />
+            Two's complement extends one's complement, and it is by far the most used method. Two's complement converts an 
+            unsigned number into one's complement and then adds 1 to the entire number. This is important because the 1 might 
+            carry through the number. For example, 0100 becomes 1011 when we take the first step (converting to one's complement). 
+            Then, we add the number 1 to the entire number. Keep in mind that in binary, 1 + 1 = 0 with a carry of 1 (because there 
+            is no "2" digit). So, 1011 + 1 = 1100 because of the carry from the first and second digits.
+            <br />
+            Below are some additional examples.
+            <br /><br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">0011</div>
+                <div class="col">3</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (-)</div>
+                <div class="col">1100</div>
+                <div class="col">-3</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Two's Comp. (-)</div>
+                <div class="col">1101</div>
+                <div class="col">-3</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col col-50">Type</div>
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">Base<sub>10</sub></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Unsigned</div>
+                <div class="col">01100100</div>
+                <div class="col">100</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">One's Comp. (-)</div>
+                <div class="col">10011011</div>
+                <div class="col">-100</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Two's Comp. (-)</div>
+                <div class="col">1001110</div>
+                <div class="col">-100</div>
+            </div>
+            <br />
+            Two's complement has the same needs as the other two: the first bit indicates sign. However, like the other two 
+            methods, two's complement can be switched between positive and negative by repeating the same process. To go from 
+            a negative number (say, 1101), you flip all the bits (0010) and add 1 (0011). And then from a positive number (0011) you 
+            flip the bits (1100) and add 1 (1101).
+            <br /><br />
+            Two's complement is used the most in computers because of its addition and subtraction properties, but we'll 
+            cover those in a later section.
+        </div>
     </ion-content>
 </ion-view>

@@ -378,10 +378,26 @@
             <br /><br />
             Base<sub>16</sub>:
             <br />
-            4,792 - (1 * 16<sup>3</sup>) = 696 - (2 * 16<sup>2</sup>) = 184 - (11 * 16<sup>1</sup>) = 8 - (8 * 16<sup>0</sup>) = 0
+            4,792 - (1 * 16<sup>3</sup>) = 696 
             <br />
-            4,792 - 4,096 = 696 - 512 = 184 - 176 = 8 - 8 = 0
+            696 - (2 * 16<sup>2</sup>) = 184 
             <br />
+            184 - (11 * 16<sup>1</sup>) = 8 
+            <br />
+            8 - (8 * 16<sup>0</sup>) = 0
+            <br /><br />
+            Which is the same as:
+            <br /><br />
+            4,792 - 4,096 = 696 
+            <br />
+            696 - 512 = 184 
+            <br />
+            184 - 176 = 8 
+            <br />
+            8 - 8 = 0
+            <br /><br />
+            Therefore...
+            <br /><br />
             4,796<sub>10</sub> = 12B8<sub>16</sub>
             <br /><br />
             Notice how, at each power that was used, we multiplied the power by the number of times we could use it. For example,
@@ -394,18 +410,43 @@
             <br /><br />
             Base<sub>8</sub>:
             <br />
-            4,792 - (1 * 8<sup>4</sup>) = 696 - (1 * 8<sup>3</sup>) = 184 - (2 * 8<sup>2</sup>) = 56 - (7 * 8<sup>1</sup>) = 0
+            4,792 - (1 * 8<sup>4</sup>) = 696 
             <br />
-            4,792 - 4,096 = 696 - 512 = 184 - 128 = 56 - 56 = 0
+            696 - (1 * 8<sup>3</sup>) = 184 
             <br />
+            184 - (2 * 8<sup>2</sup>) = 56 
+            <br />
+            56 - (7 * 8<sup>1</sup>) = 0
+            <br /><br />
+            Which is the same as:
+            <br /><br />
+            4,792 - 4,096 = 696
+            <br />
+            696 - 512 = 184
+            <br />
+            184 - 128 = 56
+            <br />
+            56 - 56 = 0
+            <br /><br />
+            Therefore...
+            <br /><br />
             4,796<sub>10</sub> = 11,270<sub>8</sub>
             <br /><br />
             Notice this time that we had to add a 0 to the end because we used 8<sup>0</sup> 0 times.
             <br /><br />
             How long do you think it would have taken you to do that by hand? Now, what if we first convert to binary?
             <br /><br />
-            4792 - (1 * 2<sup>12</sup>) = 696 - (1 * 2<sup>9</sup>) = 184 - (1 * 2<sup>7</sup>) = 56 - (1 * 2<sup>5</sup>) = 24 - (1 * 
-            2<sup>4</sup>) = 8 - (1 * 2<sup>3</sup>) = 0
+            4792 - (1 * 2<sup>12</sup>) = 696
+            <br />
+            696 - (1 * 2<sup>9</sup>) = 184
+            <br />
+            184 - (1 * 2<sup>7</sup>) = 56
+            <br />
+            56 - (1 * 2<sup>5</sup>) = 24
+            <br />
+            24 - (1 * 2<sup>4</sup>) = 8
+            <br />
+            8 - (1 * 2<sup>3</sup>) = 0
             <br /><br />
             Remember, in order to go to base<sub>2</sub> from here we have to take each power that was used and set that position = 1 
             and all other positions = 0. Once we do that, we get:
@@ -413,7 +454,7 @@
             4,792<sub>10</sub> = 1001010111000<sub>2</sub>
             <br /><br />
             And now for the easy part! (Don't forget to <b><u>start grouping from the right</u></b> and <mark>add preceding zeroes 
-            to the last group</mark> if needed!)
+            to the leftmost group</mark> if needed!)
             <br /><br />
             <div class="row">
                 <div class="col">Base<sub>2</sub></div>
