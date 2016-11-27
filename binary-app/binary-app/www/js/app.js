@@ -32,6 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+// State for the What is Binary lesson/html page.
   .state('app.what-is-binary', {
     url: '/what-is-binary',
     views: {
@@ -41,14 +42,58 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+// State for the Counting in Binary lesson/html page.
+  .state('app.counting-in-binary', {
+      url: '/counting-in-binary',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/counting-in-binary.html'
         }
       }
-    })
+  })
+
+// State for the Decimal to Binary lesson/html page.
+  .state('app.decimal-and-binary', {
+      url: '/decimal-and-binary',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/decimal-and-binary.html'
+          }
+      }
+  })
+
+// State for the Binary, Octal, Hexadecimal conversion lesson/html page.
+  .state('app.binary-octal-hexadecimal', {
+      url: '/binary-octal-hexadecimal',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/binary-octal-hexadecimal.html'
+          }
+      }
+  })
+
+// State for the One's and Two's Complement lesson/html page.
+  .state('app.ones-and-twos', {
+      url: '/ones-and-twos',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/ones-and-twos.html'
+          }
+      }
+  })
+
+// State for calculator/converter.
+     .state('app.select-options3', {
+         url: '/select-options3',
+         views: {
+             'menuContent': {
+                 templateUrl: 'templates/select-options3.html'
+             }
+         }
+     })
+
+/* Keeping this in case we need to make controllers.
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
@@ -67,7 +112,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
-  });
+  })
+  */
+
+  ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/what-is-binary');
 });

@@ -1,0 +1,45 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Main Menu</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/app/what-is-binary">
+          What is binary?
+        </ion-item>
+        <ion-item menu-close href="#/app/counting-in-binary">
+          Counting in Binary
+        </ion-item>
+        <ion-item menu-close href="#/app/decimal-to-binary">
+          Converting: Decimal to Binary
+        </ion-item>
+        <ion-item menu-close href="#/app/binary-to-decimal">
+          Converting: Binary to Decimal
+        </ion-item>
+        <ion-item menu-close href="#/app/binary-octal-hexadecimal">
+          Converting: Binary, Octal, Hexadecimal
+        </ion-item>
+        <ion-item menu-close href="#/app/ones-and-twos">
+          One's and Two's Complement
+        </ion-item>
+        <ion-item menu-close href="#/app/select-options3">
+          Binary Converter
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
