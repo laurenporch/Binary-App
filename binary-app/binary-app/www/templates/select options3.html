@@ -249,39 +249,59 @@ var size = 8;
 	//t neg: -2^7
 	//o neg: -2^7 + 1
 	//o pos: 2^7 -1
-	function defaultSize(input){
-		var arrNum = [8, 16, 32, 64];
-		var i = 0;
-		input = Number(input);
+	function defaultSize(input) {
+
+        // how many bits possible
+	    var arrNum = [8, 16, 32, 64];
+	    input = Number(input);
+
+        // default value
+	    size = 8;
 		if( input == 0){
-			size = 8;
 			return;
 		}
-		var start = 8;
+
+        // index into array
+		var i = 0;
+
+        // "largest" neg or largest pos
+		var max = ;
 		if(input <0){
-			if(document.getElementById("oneCheck").checked == true){
+		    max = - Math.pow(2, arrNum[i]-1);
+            // if we have one's complement, we have to have it work for that many bits
+		    if (document.getElementById("oneCheck").checked == true) {
+		        max = -Math.pow(2, arrNum[i] - 1) + 1;
+		    }
 				while(true){
-					if(input >= -Math.pow(2, arrNum[i]) + 1){
+					if(input >= max){
 						break;
 					}
+					i++;
 				}
 				size = arrNum[i];
 				return;
 			}
 
-			while(true){
-				if(input >= - Math.pow(2, arrNum[i])){
-					break;
-				}
-			}
-
-		}
 		else{
-
+		    // if it is positive and two or one are checked we have to make it work
+		    // for those two
+		    max = 
 			if(document.getElementById("twoCheck").checked == true ||
 				document.getElementById("oneCheck").checked == true){
-					while(true)
-			}
+			    
+			    while (true) {
+			        if (input <= Math.pow(2, arrNum[i] - 1)) {
+			            break;
+			        }
+			        i++
+			    }
+			    size = arrNum[i];
+
+			    return;
+
+		     }
+	    }
+	}
 
 
 
@@ -327,11 +347,12 @@ var size = 8;
 			return;
 		}
 
-}
+    }
 
+            
+            
+            
             </script>
-
-
         </body>
     </ion-content>
 </ion-view>
