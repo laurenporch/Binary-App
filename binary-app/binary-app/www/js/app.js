@@ -53,21 +53,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
 // State for the Decimal to Binary lesson/html page.
-  .state('app.decimal-to-binary', {
-      url: '/decimal-to-binary',
+  .state('app.decimal-and-binary', {
+      url: '/decimal-and-binary',
       views: {
           'menuContent': {
-              templateUrl: 'templates/decimal-to-binary.html'
-          }
-      }
-  })
-
-// State for the Binary to Decimal lesson/html page.
-  .state('app.binary-to-decimal', {
-      url: '/binary-to-decimal',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/binary-to-decimal.html'
+              templateUrl: 'templates/decimal-and-binary.html'
           }
       }
   })
@@ -93,11 +83,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
 // State for calculator/converter.
-     .state('app.select options3', {
-         url: '/select options3',
+     .state('app.select-options3', {
+         url: '/select-options3',
          views: {
              'menuContent': {
-                 templateUrl: 'templates/select options3.html'
+                 templateUrl: 'templates/select-options3.html'
              }
          }
      })

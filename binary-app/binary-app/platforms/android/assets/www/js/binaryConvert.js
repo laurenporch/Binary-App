@@ -1,49 +1,3 @@
-<ion-view view-title="What is Binary?">
-    <ion-content>
-        <body>
-
-            Conversion Type: <br>
-            <!--selects what type of conversion binary to decimal -->
-            <!--or decimal to binary value defined by which comes first-->
-            <select name="select" onchange="S()">
-                <option value="blank"></option>
-                <option value="Binary">Binary to Decimal</option>
-                <option value="Decimal">Decimal to Binary</option>
-            </select><br>
-
-            <!-- until we choose what what type of conversion we want to -->
-            <!-- do we shouldn't be able to start typing things into the boxes -->
-            <div id="choice" style="display:none">
-                Input:<br>
-                <input id="input" type="text"><br>
-                Output:<br>
-                <!-- if we choose binary to decimal we need to choose whether to interpret -->
-                <!-- the input binary as one's complement, unsigned, and/or twos complement -->
-                <!-- if we choose decimal to binary we need to choose whether to output -->
-                <!-- one's complement, unsigned, and/or twos complement ALTHOUGH nothing -->
-                <!-- will not change unless puts in a negative number -->
-                <!-- if one gets clicked it calls a function addIn that makes the input box shown -->
-                <input id="oneCheck" type="checkbox" onclick="addIn('one')">Ones Complement<br>
-                <input id="twoCheck" type="checkbox" onclick="addIn('two')">Twos Complement<br>
-                <input id="unsignCheck" type="checkbox" onclick="addIn('unsign')">Unsigned<br>
-                <div id="onein" style="display:none">
-                    <input id="one" type="text"> Ones Complement
-                </div>
-                <div id="twoin" style="display:none">
-                    <input id="two" type="text"> Twos Complement
-                </div>
-                <div id="unsignin" style="display:none">
-                    <input id="unsign" type="text"> Unsigned
-                </div>
-                <button type="button" id="convert" style="display:none" onclick="BinaryConversion()">Convert!</button>
-            </div>
-            <p id="para1"> para1 </p>
-            <p id="para2"> para2 </p>
-
-
-
-
-            <script>
 //PUT IN THINGS FOR WHEN THE USER PUTS IN BAD Input
 //MAYBE PUT IN A RESET BUTTON
 //NEED CSS
@@ -60,13 +14,11 @@ var size = 8;
 		}
 		else{
 		//binary to decimal
-
 			document.getElementById("choice").style.display = "block";
 			document.getElementById("para1").innerHTML = "wow";
 			document.getElementById("choice").style.display = "block";
 		}
 	}
-
 	function addIn(x){
 		str = x + 'in';
 		if(document.getElementById(x+'Check').checked == true){
@@ -80,12 +32,8 @@ var size = 8;
 				&& document.getElementById("unsignCheck").checked ==false){
 					document.getElementById("convert").style.display = "none";
 					}
-
 			}
 	}
-
-
-
 	function BinarytoDecimal(input){
 		if(input === ""){
 			return "";
@@ -101,7 +49,6 @@ var size = 8;
 		}
 		return num;
 	}
-
 	function TwoComplementtoDecimal(input){
 		var str = input.slice(1, input.length);
 		console.log(str);
@@ -114,9 +61,6 @@ var size = 8;
 			}
 		return num;
 		}
-
-
-
 	function OneComplementtoDecimal(input){
 		if(input.charAt(0) == '0'){
 			return BinarytoDecimal(input);
@@ -140,7 +84,6 @@ var size = 8;
 					isZero = false;
 				}
 			}
-
 			if(isZero){
 				return "-0";
 			} else {
@@ -151,7 +94,6 @@ var size = 8;
 			}
 			return 0;
 	}
-
 	//what to do with negative numbers or bad input
 	//default sizes: 8, 16, 32, 64
 	//u: 2^8 -1 , 2^16 -1
@@ -171,13 +113,11 @@ var size = 8;
 			input = Math.floor(input/2);
 			}
 		var i;
-
 		for(i=charArr.length -1; i>= 0; i--){
 			result += charArr[i];
 		}
 		return result;
 	}
-
 	function DecimalToOneComplement(input){
 		var result = "";
 		//if number of bits are unclear, default to
@@ -188,7 +128,6 @@ var size = 8;
 		if(input === "-0"){
 			return("11111111");
 		}
-
 		if(input > 0){
 			result +='0';
 			result += DecimalToBinary(input);
@@ -206,13 +145,11 @@ var size = 8;
 		}
 		return result;
 	}
-
 	function DecimalToTwosComplement(input){
 		var str = DecimalToOneComplement(input);
 		if(input==0){
 			return '0';
 		}
-
 		var result = "";
 		var i;
 		for(i=str.length -1; i>= 0; i--){
@@ -230,7 +167,6 @@ var size = 8;
 			}
 			return result;
 		}
-
 		var j;
 		for(j=0; j< i; j++){
 			result += str.charAt(j);
@@ -241,8 +177,6 @@ var size = 8;
 		}
 		return result;
 		}
-
-
 	//default sizes: 8, 16, 32, 64
 	//u: 2^8 -1 , 2^16 -1
 	//t pos: 2^7 -1
@@ -315,8 +249,6 @@ var size = 8;
 	function BinaryConversion(){
 		var input = document.getElementById("input").value;
 					document.getElementById("para1").innerHTML = "printed this";
-
-
 		//binary to decimal
 		if(document.getElementsByName("select")[0].value === "Binary"){
 			if(document.getElementById("oneCheck").checked == true){
@@ -346,13 +278,4 @@ var size = 8;
 		else{
 			return;
 		}
-
-    }
-
-            
-            
-            
-            </script>
-        </body>
-    </ion-content>
-</ion-view>
+}
