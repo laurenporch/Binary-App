@@ -15,7 +15,6 @@ var size = 8;
 		else{
 		//binary to decimal
 			document.getElementById("choice").style.display = "block";
-			document.getElementById("para1").innerHTML = "wow";
 			document.getElementById("choice").style.display = "block";
 		}
 	}
@@ -34,6 +33,8 @@ var size = 8;
 					}
 			}
 	}
+
+
 	function BinarytoDecimal(input){
 		if(input === ""){
 			return "";
@@ -49,6 +50,8 @@ var size = 8;
 		}
 		return num;
 	}
+
+
 	function TwoComplementtoDecimal(input){
 		var str = input.slice(1, input.length);
 		console.log(str);
@@ -60,7 +63,9 @@ var size = 8;
 			num = num - (Math.pow(2, input.length -1));
 			}
 		return num;
-		}
+	}
+
+
 	function OneComplementtoDecimal(input){
 		if(input.charAt(0) == '0'){
 			return BinarytoDecimal(input);
@@ -94,30 +99,53 @@ var size = 8;
 			}
 			return 0;
 	}
-	//what to do with negative numbers or bad input
-	//default sizes: 8, 16, 32, 64
-	//u: 2^8 -1 , 2^16 -1
-	//t pos: 2^7 -1
-	//t neg: -2^7
-	function DecimalToBinary(input){
+
+//characters should only be digits 0 - 9 Ascii: 48 - 57 or it can be '-' or '+'
+	function DecimalInput(input) {
+	    var i;
+	    for (i = 0; i < input.length; i++) {
+	        if (!((input.charCodeAt(i) > 47 && input.charCodeAt(i) < 58)) || 
+                   input.charAt(i) == '+' || input.charAt(i) == '-' ) {
+                //bad input
+	            return -1;
+	        }
+	    }
+        //good input
+	    return 1;
+	}
+
+
+	function DecimalToBinary(input) {
+	    if (input === "+0" || input === "-0") {
+	        return "00000000";
+	    }
 		input = Number(input);
 		if(input <0){
 			return ("negative numbers cannot be represented in unsigned");
 		}
 		result = "";
 		var mod = 0;
+        //count the number of iterations the while loop
+		var j = 0;
 		var charArr = new Array();
 		while(input > 0){
 			mod = input % 2;
 			charArr.push(String(mod));
-			input = Math.floor(input/2);
-			}
+			input = Math.floor(input / 2);
+			j++;
+		}
 		var i;
+        //prepend with 0s for default size
+		for (j; j < size; j++) {
+		    result += '0';
+		}
 		for(i=charArr.length -1; i>= 0; i--){
 			result += charArr[i];
 		}
 		return result;
 	}
+
+
 	function DecimalToOneComplement(input){
 		var result = "";
 		//if number of bits are unclear, default to
@@ -129,7 +157,6 @@ var size = 8;
 			return("11111111");
 		}
 		if(input > 0){
-			result +='0';
 			result += DecimalToBinary(input);
 			return result;
 		}
@@ -145,7 +172,12 @@ var size = 8;
 		}
 		return result;
 	}
-	function DecimalToTwosComplement(input){
+
+
+	function DecimalToTwosComplement(input) {
+	    if (input === "+0" || input === "-0") {
+	        return ("00000000");
+	    }
 		var str = DecimalToOneComplement(input);
 		if(input==0){
 			return '0';
@@ -185,72 +217,105 @@ var size = 8;
 	//o pos: 2^7 -1
 	function defaultSize(input) {
 
-        // how many bits possible
+	    // how many bits possible
 	    var arrNum = [8, 16, 32, 64];
 	    input = Number(input);
 
-        // default value
+	    // default value
 	    size = 8;
-		if( input == 0){
-			return;
-		}
+	    if( input == 0){
+	        return;
+	    }
 
-        // index into array
-		var i = 0;
+	    // index into array
+	    var i = 0;
 
-        // "largest" neg or largest pos
-		var max = ;
-		if(input <0){
-		    max = - Math.pow(2, arrNum[i]-1);
-            // if we have one's complement, we have to have it work for that many bits
-		    if (document.getElementById("oneCheck").checked == true) {
-		        max = -Math.pow(2, arrNum[i] - 1) + 1;
-		    }
-				while(true){
-					if(input >= max){
-						break;
-					}
-					i++;
-				}
-				size = arrNum[i];
-				return;
-			}
+	    // "largest" neg or largest pos
 
-		else{
-		    // if it is positive and two or one are checked we have to make it work
-		    // for those two
-		    max = 
+
+
+
+
+        //error handling if number takes over 64 bits? none so far
+	    if(input <0){
+	        // if we have one's complement, we have to have it work for that many bits
+	        if (document.getElementById("oneCheck").checked == true) {
+	            while(true){
+	                if(input >= -Math.pow(2, arrNum[i] - 1) + 1){
+	                    break;
+	                }
+	                i++;
+	            }
+	            size = arrNum[i];
+	            return;
+	        }
+	        else{
+    
+	            //two's complement
+	            while(true){
+	                if(input >= - Math.pow(2, arrNum[i]-1)){
+	                    break;
+	                }
+	                i++;
+	            }
+	            size = arrNum[i];
+	            return;
+	        }
+	    }
+
+	    else{
+	        // if it is positive and two or one are checked we have to make it work
+	        // for those two
 			if(document.getElementById("twoCheck").checked == true ||
 				document.getElementById("oneCheck").checked == true){
 			    
+				    while (true) {
+				        if (input <= Math.pow(2, arrNum[i] - 1)) {
+				            break;
+				        }
+				        i++;
+				    }
+				    size = arrNum[i];
+
+				    return;
+
+			}
+			else {
 			    while (true) {
-			        if (input <= Math.pow(2, arrNum[i] - 1)) {
+			        if (input <= Math.pow(2, arrNum[i]) - 1) {
 			            break;
 			        }
-			        i++
+			        i++;
 			    }
 			    size = arrNum[i];
-
 			    return;
-
-		     }
+			}
 	    }
 	}
 
-
-
-
-
-
-
-
+//Binary input must only be 0 or 1. Ascii: 48 or 49
+	function BinaryInput(input) {
+	    var i;
+	    for (i = 0; i < input.length; i++) {
+	        if (input.charCodeAt(i) != 48 && input.charCodeAt(i) != 49) {
+                //bad input
+	            return -1;
+	        }
+	    }
+        //good input
+	    return 1;
+	}
 
 
 	function BinaryConversion(){
-		var input = document.getElementById("input").value;
-					document.getElementById("para1").innerHTML = "printed this";
+	    var input = document.getElementById("input").value;
+
 		//binary to decimal
-		if(document.getElementsByName("select")[0].value === "Binary"){
+	    if (document.getElementsByName("select")[0].value === "Binary") {
+	        if (BinaryInput(input) < 0) {
+	            document.getElementById("para1").innerHTML = "Invalid input: \nInput can only consist of 0 and 1.";
+	            return;
+	        }
 			if(document.getElementById("oneCheck").checked == true){
 				document.getElementById("one").value = OneComplementtoDecimal(input);
 			}
@@ -262,7 +327,11 @@ var size = 8;
 			}
 			return;
 		}
-		else if(document.getElementsByName("select")[0].value === "Decimal"){
+	    else if (document.getElementsByName("select")[0].value === "Decimal") {
+	        if (DecimalInput(input) < 0) {
+	            document.getElementById("para1").innerHTML = "Invalid input: \nInput must consist of only digits.";
+	            return;
+	        }
 			defaultSize(input);
 			if(document.getElementById("oneCheck").checked == true){
 				document.getElementById("one").value = DecimalToOneComplement(input);
