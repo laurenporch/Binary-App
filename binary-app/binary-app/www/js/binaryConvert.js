@@ -9,6 +9,7 @@
 //o neg: -2^7 + 1
 var size = 8;
 function S() {
+    document.getElementById("para1").innerHTML = "";
     var e = document.getElementsByName("select")[0].value;
     if (e === "blank") {
         document.getElementById("choice").style.display = "none";
