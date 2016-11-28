@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>BinarytoDecimalTests</title>
+  <script src="binaryConvert.js"></script>
+  <script>
+  function test(then, expected){
+    results.total++;
+    var result = BinarytoDecimal(then)
+    if(result != expected){
+      results.bad++;
+      console.log("Expected " + expected + ", but was " + result);
+    }
+  }
+  var results = {
+    total: 0,
+    bad: 0
+  };
+  test("00000001", "1");
+  test("1", "1");
+  test("00000011", "3");
+  test("11", "3");
+  test("00000111", "7");
+  test("111", "7");
+  test("00001111", "15");
+  test("1111", "15");
+  test("00011111", "31");
+  test("11111", "31");
+  test("00111111", "63");
+  test("111111", "63");
+  test("01111111", "127");
+  test("1111111", "127");
+  test("11111111", "255");
+  test("10", "2");
+  test("100", "4");
+  test("1000", "8");
+  test("10000", "16");
+  test("100000", "32");
+  test("1000000", "64");
+  test("10000000", "128");
+  test("101", "5");
+  test("1001", "9");
+  test("10001", "17");
+  test("100001", "33");
+  test("1000001", "65");
+  test("10000001", "129");
+  test("00010000", "16");
+  test("01010000", "80");
+  console.log("Of " + results.total + " tests, " + results.bad + " failed, " + (results.total - results.bad) + " passed.");
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,5 +1,502 @@
 <ion-view view-title="Converting: Binary-Octal-Hexadecimal">
     <ion-content>
-        <h1>What other number systems do computer scientists use?</h1>
+        <div class="has-header padding">
+            <h3>What other number systems do computer scientists use?</h3>
+            Alright, so we have conversion between decimal and binary down. What's next? Well, computer scientists also use octal 
+            (base<sub>8</sub>) and hexadecimal (base<sub>16</sub>) systems fairly frequently. In fact, the characters you see on 
+            this screen are actually represented in code using hexadecimal! 
+            <br /><br />
+            "But wait!" you say. You can probably guess that base<sub>8</sub> uses the digits 0 - 7, but what about base<sub>16</sub>? 
+            Does it use the "digits" 0 - 15? Unfortunately, no. The "digits" 10 - 15 are not actually standalone digits, they are a 
+            combination of previous digits and therefore can't be used as they are. Instead, we represent the "digits" 10 - 15 using 
+            the characters A - F, respectively. This means that base<sub>16</sub> uses the digits 0 - 9 <i>and</i> A - F.
+            <br /><br />
+            Alright, so now that we know the digits, let's learn how to convert. If we're converting to base<sub>10</sub>, we can use 
+            the same method learned in the last lesson. Recall that for any base<sub>X</sub>, we can use the following formula to convert 
+            it to base<sub>10</sub>.
+            <br /><br />
+            <div class="row">
+                <div class="col col-20">Position</div>
+                <div class="col">Y</div>
+                <div class="col col-10">...</div>
+                <div class="col">2</div>
+                <div class="col">1</div>
+                <div class="col">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">Digit</div>
+                <div class="col">z</div>
+                <div class="col col-10">...</div>
+                <div class="col">c</div>
+                <div class="col">b</div>
+                <div class="col">a</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">Value</div>
+                <div class="col">z * X<sup>X</sup></div>
+                <div class="col col-10">...</div>
+                <div class="col">c * X<sup>2</sup></div>
+                <div class="col">b * X<sup>1</sup></div>
+                <div class="col">a * X<sup>0</sup></div>
+            </div>
+            <div class="row">
+                <div class="col col-20">Total</div>
+                <div class="col">
+                    (z * X<sup>Y</sup>) + ... + (c * X<sup>2</sup>) + (b * X<sup>1</sup>) + (a * X<sup>0</sup>) =
+                    Base<sub>10</sub> #
+                </div>
+            </div>
+            <br />
+            So, if we're given the base<sub>8</sub> number 734, we can turn it into base<sub>10</sub> like so:
+            <br /><br />
+            <div class="row">
+                <div class="col col-20">Position</div>
+                <div class="col col-10">#</div>
+                <div class="col">Value</div>
+                <div class="col col-20">Total</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">2</div>
+                <div class="col col-10">7</div>
+                <div class="col">(7 * 8<sup>2</sup>) = (7 * 64) =</div>
+                <div class="col col-20">448</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">1</div>
+                <div class="col col-10">3</div>
+                <div class="col">(3 * 8<sup>1</sup>) = (3 * 8) =</div>
+                <div class="col col-20">24</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">0</div>
+                <div class="col col-10">4</div>
+                <div class="col">(4 * 8<sup>0</sup>) = (4 * 1) =</div>
+                <div class="col col-20">4</div>
+            </div>
+            <div class="row">
+                <div class="col col-80">Total</div>
+                <div class="col">476</div>
+            </div>
+            <br />
+            Or if we're given the base<sub>16</sub> number A93...
+            <br />
+            (Remember, A = "10" in base<sub>16</sub>).
+            <br /><br />
+            <div class="row">
+                <div class="col col-20">Position</div>
+                <div class="col col-10">#</div>
+                <div class="col">Value</div>
+                <div class="col col-20">Total</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">2</div>
+                <div class="col col-10">A</div>
+                <div class="col">(10 * 16<sup>2</sup>) = (10 * 256) =</div>
+                <div class="col col-20">2,560</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">1</div>
+                <div class="col col-10">9</div>
+                <div class="col">(9 * 16<sup>1</sup>) = (9 * 16) =</div>
+                <div class="col col-20">144</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">0</div>
+                <div class="col col-10">3</div>
+                <div class="col">(3 * 16<sup>0</sup>) = (3 * 1) =</div>
+                <div class="col col-20">3</div>
+            </div>
+            <div class="row">
+                <div class="col col-80">Total</div>
+                <div class="col">2,707</div>
+            </div>
+            <br />
+            Hmm, this is alright, but it's a little more difficult than bas<sub>2</sub>, isn't it? What happens if you have a 
+            base<sub>16</sub> number like F27BC? Unless you have a calculator, it's going to take a while. There's got to be an 
+            easier way to do this...
+            <br /><br />
+            Let's take a moment to consider something: 2<sup>3</sup> = 8 and 2<sup>4</sup> = 16. This means that base<sub>2</sub> 
+            numbers correspond to base<sub>8</sub> and base<sub>16</sub> numbers in some way. Why does this matter? Well, instead of 
+            converting base<sub>8</sub> or base<sub>16</sub> numbers straight to base<sub>10</sub> like we did a few moments ago, 
+            we can convert them into base<sub>2</sub> first, and then into base<sub>10</sub>. It's an extra step, but once we go 
+            through a few examples you'll see that it will actually save you time.
+            <br /><br />
+            Let's try this again, using this new idea. Our base<sub>8</sub> number is 734 and we need to convert it to base<sub>2</sub>. 
+            Well, 2<sup>3</sup> = 8, so <u>three digits in base<sub>2</sub> is the same as one digit in base<sub>8</sub></u>. The table 
+            below should help you see the connection.
+            <br /><br />
+            <div class="row">
+                <div class="col">Base<sub>8</sub></div>
+                <div class="col">7</div>
+                <div class="col">3</div>
+                <div class="col">4</div>
+                <div class="col col-33">734</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">111</div>
+                <div class="col">011</div>
+                <div class="col">100</div>
+                <div class="col col-33">111011100</div>
+            </div>
+            <br />
+            Alright, now that it's in binary, we can just string these together to create our new number and convert it to 
+            base<sub>10</sub>.
+            <br /><br />
+            <div class="row">
+                <div class="col col-20">Position</div>
+                <div class="col col-10">#</div>
+                <div class="col">Value</div>
+                <div class="col col-20">Total</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">9</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>9</sup>) = (1 * 512) =</div>
+                <div class="col col-20">512</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">8</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>8</sup>) = (1 * 256) =</div>
+                <div class="col col-20">256</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">7</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>7</sup>) = (1 * 128) =</div>
+                <div class="col col-20">128</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">6</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>6</sup>) = (1 * 64) =</div>
+                <div class="col col-20">64</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">5</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>5</sup>) = (0 * 32) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">4</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>4</sup>) = (1 * 16) =</div>
+                <div class="col col-20">16</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">3</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>3</sup>) = (1 * 8) =</div>
+                <div class="col col-20">8</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">2</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>2</sup>) = (1 * 4) =</div>
+                <div class="col col-20">4</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">1</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>1</sup>) = (0 * 2) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">0</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>0</sup>) = (0 * 1) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-80">Total</div>
+                <div class="col">476</div>
+            </div>
+            <br />
+            And now with A93, 2<sup>4</sup> = 16, so <u>every digit in base<sub>16</sub> is equivalent to four binary digits</u>.
+            <br /><br />
+            <div class="row">
+                <div class="col">Base<sub>16</sub></div>
+                <div class="col">A</div>
+                <div class="col">9</div>
+                <div class="col">3</div>
+                <div class="col col-33">A93</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">1010</div>
+                <div class="col">1001</div>
+                <div class="col">0011</div>
+                <div class="col col-33">101010010011</div>
+            </div>
+            <br />
+            And then we string them together and convert...
+            <br /><br />
+            <div class="row">
+                <div class="col col-20">Position</div>
+                <div class="col col-10">#</div>
+                <div class="col">Value</div>
+                <div class="col col-20">Total</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">11</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>11</sup>) = (1 * 2,048) =</div>
+                <div class="col col-20">2,048</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">10</div>
+                <div class="col col-10">1</div>
+                <div class="col">(0 * 2<sup>9</sup>) = (0 * 1,024) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">9</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>9</sup>) = (1 * 512) =</div>
+                <div class="col col-20">512</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">8</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>8</sup>) = (0 * 256) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">7</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>7</sup>) = (1 * 128) =</div>
+                <div class="col col-20">128</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">6</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>6</sup>) = (0 * 64) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">5</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>5</sup>) = (0 * 32) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">4</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>4</sup>) = (1 * 16) =</div>
+                <div class="col col-20">16</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">3</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>3</sup>) = (0 * 8) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">2</div>
+                <div class="col col-10">0</div>
+                <div class="col">(0 * 2<sup>2</sup>) = (0 * 4) =</div>
+                <div class="col col-20">0</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">1</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>1</sup>) = (1 * 2) =</div>
+                <div class="col col-20">2</div>
+            </div>
+            <div class="row">
+                <div class="col col-20">0</div>
+                <div class="col col-10">1</div>
+                <div class="col">(1 * 2<sup>0</sup>) = (1 * 1) =</div>
+                <div class="col col-20">1</div>
+            </div>
+            <div class="row">
+                <div class="col col-80">Total</div>
+                <div class="col">2,707</div>
+            </div>
+            <br />
+            "Okay", you say, "But why bother doing this at all? It just looks like extra work."
+            <br /><br />
+            Well, one reason most people prefer to convert base<sub>8</sub> and base<sub>16</sub> numbers into base<sub>2</sub> first 
+            is because base<sub>2</sub> is easier to compute. If you know any given power of 2 (say, 2<sup>4</sup> = 16), then you 
+            can easily figure out what the adjacent powers are by dividing or multiplying by 2 (2<sup>3</sup> = 16/2 = 8; 2<sup>5</sup> 
+            = 16 * 2 = 32). Base<sub>8</sub> and base<sub>16</sub> are a little harder, especially when you get into the higher powers. 
+            Who wants to spend their time computing 16<sup>5</sup>? And once you compute 16<sup>5</sup>, finding 16<sup>4</sup> and 
+            16<sup>6</sup> is a little harder than it was in base<sub>2</sub>; now you have to divide and multiply by 16. Another 
+            reason the two-step process is preferred is because most computer scientists become familiar with binary anyway, so we 
+            might as well use the knowledge we already have to make things easier, right?
+            <br /><br />
+            This process also works in reverse. If you take our old base<sub>2</sub> number, 10010110, you can turn it into 
+            base<sub>8</sub> by grouping every three digits together, or base<sub>16</sub> by grouping every four digits together. 
+            However, it is very important that you <b><u>start grouping from the right</u></b>. This means that you might need to 
+            add preceding zeroes to the left of the binary number in order to make the right size of grouping.
+            <br /><br />
+            To convert to base<sub>8</sub>, we have to make groups of three. If we start grouping from the right side, we get the 
+            following:
+            <br />
+            10|010|110
+            <br />
+            But we have to make sure that each of these groups have three digits, so we add a 0 to the front like so:
+            <br />
+            <mark>0</mark>10|010|110
+            <br />
+            We can then convert each group into a single base<sub>8</sub> digit. The table below should help you visualize this.
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col"><mark>0</mark>10</div>
+                <div class="col">010</div>
+                <div class="col">110</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>8</sub></div>
+                <div class="col">2</div>
+                <div class="col">2</div>
+                <div class="col">6</div>
+            </div>
+            <br />
+            If we want to convert 10010110 to base<sub>16</sub>, we have to make groups of four. Remember, you <b><u>must start 
+            grouping from the right side</u></b>. This binary number evenly groups on its own, so we don't have to add preceding zeroes.
+            <br /><br />
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col">1001</div>
+                <div class="col">0110</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>16</sub></div>
+                <div class="col">9</div>
+                <div class="col">6</div>
+            </div>
+            <br />
+            We already know that 10010110 in base<sub>10</sub> is 150, but now we can see that in base<sub>8</sub> it's 226 and in 
+            base<sub>16</sub> it's 96. Again, the two-step conversion is to help you reduce the number of powers you need to remember. 
+            Why bother memorizing the powers of 16 and 8 when you can just stick with the powers of 2?
+            <br /><br />
+            Our last example will hopefully drive the process home. Say we want to convert the base<sub>10</sub> number 4,792 into 
+            both base<sub>8</sub> and base<sub>16</sub>. First, let's do it directly.
+            <br /><br />
+            Base<sub>16</sub>:
+            <br />
+            4,792 - (1 * 16<sup>3</sup>) = 696 
+            <br />
+            696 - (2 * 16<sup>2</sup>) = 184 
+            <br />
+            184 - (11 * 16<sup>1</sup>) = 8 
+            <br />
+            8 - (8 * 16<sup>0</sup>) = 0
+            <br /><br />
+            Which is the same as:
+            <br /><br />
+            4,792 - 4,096 = 696 
+            <br />
+            696 - 512 = 184 
+            <br />
+            184 - 176 = 8 
+            <br />
+            8 - 8 = 0
+            <br /><br />
+            Therefore...
+            <br /><br />
+            4,796<sub>10</sub> = 12B8<sub>16</sub>
+            <br /><br />
+            Notice how, at each power that was used, we multiplied the power by the number of times we could use it. For example,
+            696 is too small to subtract another power of 3 (16<sup>3</sup> = 4,096), but we can definitely subtract a power of 2 
+            from it (16<sup>2</sup> = 256). In fact, we can subtract 256 <i>twice</i> from 696 before it becomes too small. We do the 
+            same with 184 and subtracting (11 * 16) from it. We then take the number of times we we used each power and string them 
+            together to create the base<sub>16</sub> number 12B8 (remember, B = "11" in base<sub>16</sub>).
+            <br /><br />
+            Now, doing the same thing with base<sub>8</sub>...
+            <br /><br />
+            Base<sub>8</sub>:
+            <br />
+            4,792 - (1 * 8<sup>4</sup>) = 696 
+            <br />
+            696 - (1 * 8<sup>3</sup>) = 184 
+            <br />
+            184 - (2 * 8<sup>2</sup>) = 56 
+            <br />
+            56 - (7 * 8<sup>1</sup>) = 0
+            <br /><br />
+            Which is the same as:
+            <br /><br />
+            4,792 - 4,096 = 696
+            <br />
+            696 - 512 = 184
+            <br />
+            184 - 128 = 56
+            <br />
+            56 - 56 = 0
+            <br /><br />
+            Therefore...
+            <br /><br />
+            4,796<sub>10</sub> = 11,270<sub>8</sub>
+            <br /><br />
+            Notice this time that we had to add a 0 to the end because we used 8<sup>0</sup> 0 times.
+            <br /><br />
+            How long do you think it would have taken you to do that by hand? Now, what if we first convert to binary?
+            <br /><br />
+            4792 - (1 * 2<sup>12</sup>) = 696
+            <br />
+            696 - (1 * 2<sup>9</sup>) = 184
+            <br />
+            184 - (1 * 2<sup>7</sup>) = 56
+            <br />
+            56 - (1 * 2<sup>5</sup>) = 24
+            <br />
+            24 - (1 * 2<sup>4</sup>) = 8
+            <br />
+            8 - (1 * 2<sup>3</sup>) = 0
+            <br /><br />
+            Remember, in order to go to base<sub>2</sub> from here we have to take each power that was used and set that position = 1 
+            and all other positions = 0. Once we do that, we get:
+            <br />
+            4,792<sub>10</sub> = 1001010111000<sub>2</sub>
+            <br /><br />
+            And now for the easy part! (Don't forget to <b><u>start grouping from the right</u></b> and <mark>add preceding zeroes 
+            to the leftmost group</mark> if needed!)
+            <br /><br />
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col"><mark>000</mark>1</div>
+                <div class="col">0010</div>
+                <div class="col">1011</div>
+                <div class="col">1000</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>16</sub></div>
+                <div class="col">1</div>
+                <div class="col">2</div>
+                <div class="col">B</div>
+                <div class="col">8</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">Base<sub>2</sub></div>
+                <div class="col"><mark>00</mark>1</div>
+                <div class="col">001</div>
+                <div class="col">010</div>
+                <div class="col">111</div>
+                <div class="col">000</div>
+            </div>
+            <div class="row">
+                <div class="col">Base<sub>8</sub></div>
+                <div class="col">1</div>
+                <div class="col">1</div>
+                <div class="col">2</div>
+                <div class="col">7</div>
+                <div class="col">0</div>
+            </div>
+            <br />
+            As you can see, we got the same answers regardless of which method we used. However, I recommend you try both 
+            methods by hand to consider which one is better for you. The vast majority of people will find the second method 
+            (convert to binary first) faster, but there's nothing wrong with the first method. Use whichever method you are 
+            more comfortable with!
+            <br /><br />
+            <div class="button-bar button-block">
+                <a class="button button-stable" href="#/app/decimal-and-binary">Previous</a>
+                <a class="button button-positive" href="#/app/ones-and-twos">Next</a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

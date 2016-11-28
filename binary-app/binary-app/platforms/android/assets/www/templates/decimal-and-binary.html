@@ -1,5 +1,242 @@
-<ion-view view-title="Converting: Decimal to Binary">
+<ion-view view-title="Converting: Decimal and Binary">
   <ion-content>
-    <h1>How do you make a decimal number turn into a binary number?</h1>
+      <div class="has-header padding">
+          <h3>How do you convert between a decimal number and a binary number?</h3>
+          Alright, so you understand how to count in binary. That wasn't too hard, right? But conceptually, what's going on here?
+          <br /><br />
+          In base<sub>10</sub>, as we add digits to the left, we're increasing by a magnitude of 10. So, for the number 15, the 1 digit is 
+          the equivalent of 10 to the power of 1. The 5 digit is the equivalent of 10 to the power of 0 (remember, any digit to the 
+          power of 0 equals 1). We then take those digits and multiply them by their powers.
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col col-10">#</div>
+              <div class="col">Value</div>
+              <div class="col col-20">Total</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">1</div>
+              <div class="col col-10">1</div>
+              <div class="col">(1 * 10<sup>1</sup>) = (1 * 10) =</div>
+              <div class="col col-20">10</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">0</div>
+              <div class="col col-10">5</div>
+              <div class="col">(5 * 10<sup>0</sup>) = (5 * 1) =</div>
+              <div class="col col-20">5</div>
+          </div>
+          <div class="row">
+              <div class="col col-80">Total</div>
+              <div class="col">15</div>
+          </div>
+          <br />
+          What about three digits? What's happening with the number 347?
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col col-10">#</div>
+              <div class="col">Value</div>
+              <div class="col col-20">Total</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">2</div>
+              <div class="col col-10">3</div>
+              <div class="col">(3 * 10<sup>2</sup>) = (3 * 100) =</div>
+              <div class="col col-20">300</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">1</div>
+              <div class="col col-10">4</div>
+              <div class="col">(4 * 10<sup>1</sup>) = (4 * 10) =</div>
+              <div class="col col-20">40</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">0</div>
+              <div class="col col-10">7</div>
+              <div class="col">(7 * 10<sup>0</sup>) = (7 * 1) =</div>
+              <div class="col col-20">7</div>
+          </div>
+          <div class="row">
+              <div class="col col-80">Total</div>
+              <div class="col">347</div>
+          </div>
+          <br />
+          You should see a pattern emerging. The rightmost digit is considered as "position 0". The next-left digit is "position 1", 
+          the next-left from there is "position 2", to the left of that digit is "position 3", and so forth. We then take each digit 
+          and multiply it by its corresponding base<sup>position</sup>. In our example of 347, we multiply 7 by 10<sup>0</sup> and so on.
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col">Y</div>
+              <div class="col col-10">...</div>
+              <div class="col">2</div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Digit</div>
+              <div class="col">z</div>
+              <div class="col col-10">...</div>
+              <div class="col">c</div>
+              <div class="col">b</div>
+              <div class="col">a</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Value</div>
+              <div class="col">z * 10<sup>Y</sup></div>
+              <div class="col col-10">...</div>
+              <div class="col">c * 10<sup>2</sup></div>
+              <div class="col">b * 10<sup>1</sup></div>
+              <div class="col">a * 10<sup>0</sup></div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Total</div>
+              <div class="col">(z * 10<sup>Y</sup>) + ... + (c * 10<sup>2</sup>) + (b * 10<sup>1</sup>) + (a * 10<sup>0</sup>) = 
+              Base<sub>10</sub> #</div>
+          </div>
+          <br />
+          We can see how base<sub>10</sub> numbers work like this, but what about other bases? It turns out this same formula can be applied 
+          to any base<sub>X</sub> to make it into base<sub>10</sub>.
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col">Y</div>
+              <div class="col col-10">...</div>
+              <div class="col">2</div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Digit</div>
+              <div class="col">z</div>
+              <div class="col col-10">...</div>
+              <div class="col">c</div>
+              <div class="col">b</div>
+              <div class="col">a</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Value</div>
+              <div class="col">z * X<sup>X</sup></div>
+              <div class="col col-10">...</div>
+              <div class="col">c * X<sup>2</sup></div>
+              <div class="col">b * X<sup>1</sup></div>
+              <div class="col">a * X<sup>0</sup></div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Total</div>
+              <div class="col">
+                  (z * X<sup>Y</sup>) + ... + (c * X<sup>2</sup>) + (b * X<sup>1</sup>) + (a * X<sup>0</sup>) =
+                  Base<sub>10</sub> #
+              </div>
+          </div>
+          <br />
+          10010110: How can you figure out what this number is supposed to be when converted to base<sup>10</sup>? You could count 
+          all the way up to that number in binary if you really wanted to, but it would take a pretty long time. Instead, we can use 
+          the (digit * base<sup>position</sup>) formula from our previous examples to convert any base<sub>X</sub> to a base<sub>10</sub> 
+          number. So, to convert a base<sub>2</sub> number like 10010110 to a base<sub>10</sub> number, we can do the following.
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col col-10">#</div>
+              <div class="col">Value</div>
+              <div class="col col-20">Total</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">7</div>
+              <div class="col col-10">1</div>
+              <div class="col">(1 * 2<sup>7</sup>) = (1 * 128) =</div>
+              <div class="col col-20">128</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">6</div>
+              <div class="col col-10">0</div>
+              <div class="col">(0 * 2<sup>6</sup>) = (0 * 64) =</div>
+              <div class="col col-20">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">5</div>
+              <div class="col col-10">0</div>
+              <div class="col">(0 * 2<sup>5</sup>) = (0 * 32) =</div>
+              <div class="col col-20">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">4</div>
+              <div class="col col-10">1</div>
+              <div class="col">(1 * 2<sup>4</sup>) = (1 * 16) =</div>
+              <div class="col col-20">16</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">3</div>
+              <div class="col col-10">0</div>
+              <div class="col">(0 * 2<sup>3</sup>) = (0 * 8) =</div>
+              <div class="col col-20">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">2</div>
+              <div class="col col-10">1</div>
+              <div class="col">(1 * 2<sup>2</sup>) = (1 * 4) =</div>
+              <div class="col col-20">4</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">1</div>
+              <div class="col col-10">1</div>
+              <div class="col">(1 * 2<sup>1</sup>) = (1 * 2) =</div>
+              <div class="col col-20">2</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">0</div>
+              <div class="col col-10">0</div>
+              <div class="col">(0 * 2<sup>0</sup>) = (0 * 1) =</div>
+              <div class="col col-20">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-80">Total</div>
+              <div class="col">150</div>
+          </div>
+          <br />
+          This means the binary (base<sub>2</sub>) number 10010110 is actually the decimal (base<sub>10</sub>) number 150.
+          <br /><br />
+          What about converting the other way, from decimal to binary? It's simple--we just reverse the process we've used so far. 
+          We can start with a decimal number, like 150, and find the highest power of 2 that is less than that number. For example, 
+          2<sup>8</sup> is 256, which is higher than 150 so we can't use it. But 2<sup>7</sup> is 128, which is less than 150 so we 
+          can use it. We continue this pattern until we get to 0.
+          <br /><br />
+          150 - 128 (2<sup>7</sup>) = 22 - 16 (2<sup>4</sup>) = 6 - 4 (2<sup>2</sup>) = 2 - 2 (2<sup>1</sup>) = 0
+          <br /><br />
+          Now, in order to go to base<sub>2</sub>, we take each power that was used and set that position as 1 and all other 
+          positions as 0.
+          <br /><br />
+          <div class="row">
+              <div class="col col-20">Position</div>
+              <div class="col">7</div>
+              <div class="col">6</div>
+              <div class="col">5</div>
+              <div class="col">4</div>
+              <div class="col">3</div>
+              <div class="col">2</div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+          </div>
+          <div class="row">
+              <div class="col col-20">Base<sub>2</sub></div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+              <div class="col">0</div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+              <div class="col">1</div>
+              <div class="col">1</div>
+              <div class="col">0</div>
+          </div>
+          <br />
+          As you can see, we get our original binary number again, 10010110. This requires some knowledge of the powers of 2, but 
+          those are pretty easy to compute if you don't know them off the top of your head.
+          <br /><br />
+          <div class="button-bar button-block">
+              <a class="button button-stable" href="#/app/counting-in-binary">Previous</a>
+              <a class="button button-positive" href="#/app/binary-octal-hexadecimal">Next</a>
+          </div>
+      </div>
   </ion-content>
 </ion-view>
