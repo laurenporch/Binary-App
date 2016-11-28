@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>OnesComplementToDecimalTests</title>
+  <script src="binaryConvert.js"></script>
+  <script>
+  function test(then, expected){
+    results.total++;
+    var result = OneComplementtoDecimal(then)
+    if(result != expected){
+      results.bad++;
+      console.log("Expected " + expected + ", but was " + result);
+    }
+  }
+  var results = {
+    total: 0,
+    bad: 0
+  };
+  test("0", "0");
+  test("110010", "50");
+  test("11001101", "-50");
+  test("1111111", "127");
+  test("10000000", "-127");
+  test("11111110", "-1");
+  test("1", "1");
+  test("11011", "27");
+  test("11100100", "-27");
+  test("10110001", "-78");
+  test("1001110", "78");
+  test("1100", "12");
+  test("11110011", "-12");
+  test("1100101", "101");
+  test("10011010", "-101");
+  test("100", "4");
+  test("11111011", "-4");
+  test("1011010", "90");
+  test("10100101", "-90");
+  test("100000", "32");
+  test("11011111", "-32");
+  console.log("Of " + results.total + " tests, " + results.bad + " failed, " + (results.total - results.bad) + " passed.");
+  </script>
+</head>
+<body>
+
+</body>
+</html>

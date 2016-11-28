@@ -1,0 +1,136 @@
+<ion-view view-title="Binary Converter">
+    <ion-content>
+        <body>
+
+            
+            <!--selects what type of conversion binary to decimal -->
+            <!--or decimal to binary value defined by which comes first-->
+
+            <!-- selection, Ionic-style-->
+            <label class="item item-input item-select item-dark">
+                <div class="input-label">
+                    Conversion Type:
+                </div>
+
+                <select name="select" onchange="S()">
+                    <option value="blank"></option>
+                    <option value="Binary">Binary to Decimal</option>
+                    <option value="Decimal">Decimal to Binary</option>
+                </select><br>
+            </label>
+
+           <!-- Old code-in case we need to go back~
+               <select name="select" onchange="S()"> 
+                <option value="blank"></option>
+                <option value="Binary">Binary to Decimal</option>
+                <option value="Decimal">Decimal to Binary</option>
+              </select><br>
+            -->
+
+            <!-- until we choose what what type of conversion we want to -->
+            <!-- do we shouldn't be able to start typing things into the boxes -->         
+            
+            <div id="choice" style="display:none">
+
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label" t>Input:</span>
+                        <input id="input" type="text" placeholder="Input">
+                    </label>
+                    <!--Output:<br>-->
+                </div>
+
+                <!-- Old code-in case I break smth
+                Input:<br>
+                <input id="input" type="text"><br>
+                Output:<br>
+                -->
+
+                <!-- if we choose binary to decimal we need to choose whether to interpret -->
+                <!-- the input binary as one's complement, unsigned, and/or twos complement -->
+                <!-- if we choose decimal to binary we need to choose whether to output -->
+                <!-- one's complement, unsigned, and/or twos complement ALTHOUGH nothing -->
+                <!-- will not change unless puts in a negative number -->
+                <!-- if one gets clicked it calls a function addIn that makes the input box shown -->
+                <ul class="list">
+                    <li class="item item-toggle">
+                        1's Complement
+                        <label class="toggle toggle-assertive">
+                            <input id="oneCheck" type="checkbox" style="color: red;"  onclick="addIn('one')">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <li class="item item-toggle">
+                        2's Complement
+                        <label class="toggle toggle-balanced">
+                            <input id="twoCheck" type="checkbox" onclick="addIn('two')">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <li class="item item-toggle">
+                        Unsigned
+                        <label class="toggle toggle-positive">
+                            <input id="unsignCheck" type="checkbox" onclick="addIn('unsign')">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+                    <b>Output:</b> <p id="para1" class="assertive"></p>
+                <!-- Old code-cuz I prob broke smth
+                <input id="oneCheck" type="checkbox" onclick="addIn('one')">Ones Complement<br>
+                <input id="twoCheck" type="checkbox" onclick="addIn('two')">Twos Complement<br>
+                <input id="unsignCheck" type="checkbox" onclick="addIn('unsign')">Unsigned<br>
+                -->
+
+                <div class="list">
+                    <div id="onein" style="display:none">
+                        <label class="item item-input item-stacked-label item-assertive">
+                            <span class="input-label" t>1's Complement:</span>
+                            <input id="one" type="text"  placeholder="Output">
+                        </label>
+                    </div>
+                    <div id="twoin" style="display:none">
+                        <label class="item item-input item-stacked-label item-balanced">
+                            <span class="input-label" t>2's Complement:</span>
+                            <input id="two" type="text" placeholder="Output">
+                        </label>
+                    </div>
+                    <div id="unsignin" style="display:none">
+                        <label class="item item-input item-stacked-label item-positive">
+                            <span class="input-label" t>Unsigned:     </span>
+                            <input id="unsign" type="text" placeholder="Output">
+                        </label>
+                    </div>
+                </div>
+
+
+           <!-- "Def broke smth"
+                <div id="onein" style="display:none">
+                    <input id="one" type="text"> Ones Complement
+                </div>
+                <div id="twoin" style="display:none">
+                    <input id="two" type="text"> Twos Complement
+                </div>
+                <div id="unsignin" style="display:none">
+                    <input id="unsign" type="text"> Unsigned
+                </div>
+            -->
+                <center>
+                    <button type="button" id="convert" style="display:none; color: #000000; padding: 10px 25px;" onclick="BinaryConversion()">Convert!</button>
+                </center>
+            </div>
+            
+            <p id="para2"></p>            
+
+
+        </body>
+    </ion-content>
+</ion-view>
