@@ -37,7 +37,7 @@
                         <span class="input-label" t>Input:</span>
                         <input id="input" type="text" placeholder="Input">
                     </label>
-                    <!--Output:<br> -->
+                    <!--Output:<br>-->
                 </div>
 
                 <!-- Old code-in case I break smth
@@ -54,7 +54,7 @@
                 <!-- if one gets clicked it calls a function addIn that makes the input box shown -->
                 <ul class="list">
                     <li class="item item-toggle">
-                        One's Complement
+                        1's Complement
                         <label class="toggle toggle-assertive">
                             <input id="oneCheck" type="checkbox" style="color: red;"  onclick="addIn('one')">
                             <div class="track">
@@ -64,7 +64,7 @@
                     </li>
 
                     <li class="item item-toggle">
-                        Two's Complement
+                        2's Complement
                         <label class="toggle toggle-balanced">
                             <input id="twoCheck" type="checkbox" onclick="addIn('two')">
                             <div class="track">
@@ -83,7 +83,7 @@
                         </label>
                     </li>
                 </ul>
-
+                    <b>Output:</b> <p id="para1" class="assertive">para1</p>
                 <!-- Old code-cuz I prob broke smth
                 <input id="oneCheck" type="checkbox" onclick="addIn('one')">Ones Complement<br>
                 <input id="twoCheck" type="checkbox" onclick="addIn('two')">Twos Complement<br>
@@ -92,20 +92,20 @@
 
                 <div class="list">
                     <div id="onein" style="display:none">
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label" t>One's Complement:</span>
-                            <input id="one" type="text" placeholder="Output">
+                        <label class="item item-input item-stacked-label item-assertive">
+                            <span class="input-label" t>1's Complement:</span>
+                            <input id="one" type="text"  placeholder="Output">
                         </label>
                     </div>
                     <div id="twoin" style="display:none">
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label" t>Two's Complement:</span>
+                        <label class="item item-input item-stacked-label item-balanced">
+                            <span class="input-label" t>2's Complement:</span>
                             <input id="two" type="text" placeholder="Output">
                         </label>
                     </div>
                     <div id="unsignin" style="display:none">
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label" t>Unsigned:</span>
+                        <label class="item item-input item-stacked-label item-positive">
+                            <span class="input-label" t>Unsigned:     </span>
                             <input id="unsign" type="text" placeholder="Output">
                         </label>
                     </div>
@@ -127,7 +127,7 @@
                     <button type="button" id="convert" style="display:none; color: #000000; padding: 10px 25px;" onclick="BinaryConversion()">Convert!</button>
                 </center>
             </div>
-            <p id="para1"> para1 </p>
+            
             <p id="para2"> para2 </p>            
 
 
