@@ -10,38 +10,67 @@
     var result = DecimalToBinary(then)
     if(result != expected){
       results.bad++;
-      console.log("Expected " + expected + ", but was " + result);
+      console.log("FAILED! Test " + results.total + ": \n Expected: " + expected + ", \n But was: " + result);
+    }
+    if(result == expected){
+      console.log("Success! Test " + results.total + ": \n Expected: " + expected + ", \n Result: " + result);
     }
   }
   var results = {
     total: 0,
     bad: 0
   };
-  test("00000001", "1");
-  test("1", "1");
-  test("3", "11");
-  test("7", "111");
-  test("15", "1111");
-  test("31", "11111");
-  test("63", "111111");
-  test("127", "1111111");
+  //Test 1
+  test("00000001", "00000001");
+  //Test 2
+  test("1", "00000001");
+  //Test 3
+  test("3", "00000011");
+  //Test 4
+  test("7", "00000111");
+  //Test 5
+  test("15", "00001111");
+  //Test 6
+  test("31", "00011111");
+  //Test 7
+  test("63", "00111111");
+  //Test 8
+  test("127", "01111111");
+  //Test 9
   test("255", "11111111");
-  test("2", "10");
-  test("4", "100");
-  test("8", "1000");
-  test("16", "10000");
-  test("32", "100000");
-  test("64", "1000000");
+  //Test 10
+  test("2", "00000010");
+  //Test 11
+  test("4", "00000100");
+  //Test 12
+  test("8", "00001000");
+  //Test 13
+  test("16", "00010000");
+  //Test 14
+  test("32", "00100000");
+  //Test 15
+  test("64", "01000000");
+  //Test 16
   test("128", "10000000");
-  test("5", "101");
-  test("9", "1001");
-  test("17", "10001");
-  test("33", "100001");
-  test("65", "1000001");
+  //Test 17
+  test("5", "00000101");
+  //Test 18
+  test("9", "00001001");
+  //Test 19
+  test("17", "00010001");
+  //Test 20
+  test("33", "00100001");
+  //Test 21
+  test("65", "01000001");
+  //Test 22
   test("129", "10000001");
-  test("21", "10101");
+  //Test 23
+  test("21", "00010101");
+  //Test 24
   test("170", "10101010");
+  //Test 25
   test("-1", "negative numbers cannot be represented in unsigned");
+  //Test 26
   test("-255", "negative numbers cannot be represented in unsigned")
   console.log("Of " + results.total + " tests, " + results.bad + " failed, " + (results.total - results.bad) + " passed.");
   </script>
