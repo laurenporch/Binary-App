@@ -10,33 +10,57 @@
     var result = DecimalToTwosComplement(then)
     if(result != expected){
       results.bad++;
-      console.log("Expected " + expected + ", but was " + result);
+      console.log("FAILED! Test " + results.total + ": \n Expected: " + expected + ", \n But was: " + result);
+    }
+    if(result == expected){
+      console.log("Success! Test " + results.total + ": \n Expected: " + expected + ", \n Result: " + result);
     }
   }
   var results = {
     total: 0,
     bad: 0
   };
-  test("0", "0");
-  test("50", "110010");
+  //Test 1
+  test("0", "00000000");
+  //Test 2
+  test("50", "00110010");
+  //Test 3
   test("-50", "11001110");
-  test("127", "1111111");
+  //Test 4
+  test("127", "01111111");
+  //Test 5
   test("-127", "10000001");
+  //Test 6
   test("-1", "11111111");
-  test("1", "1");
-  test("27", "11011");
+  //Test 7
+  test("1", "00000001");
+  //Test 8
+  test("27", "00011011");
+  //Test 9
   test("-27", "11100101");
+  //Test 10
   test("-78", "10110010");
-  test("78", "1001110");
-  test("12", "1100");
+  //Test 11
+  test("78", "01001110");
+  //Test 12
+  test("12", "00001100");
+  //Test 13
   test("-12", "11110100");
-  test("101", "1100101");
+  //Test 14
+  test("101", "01100101");
+  //Test 15
   test("-101", "10011011");
-  test("4", "100");
+  //Test 16
+  test("4", "00000100");
+  //Test 17
   test("-4", "11111100");
-  test("90", "1011010");
+  //Test 18
+  test("90", "01011010");
+  //Test 19
   test("-90", "10100110");
-  test("32", "100000");
+  //Test 20
+  test("32", "00100000");
+  //Test 21
   test("-32", "11100000");
   console.log("Of " + results.total + " tests, " + results.bad + " failed, " + (results.total - results.bad) + " passed.");
   </script>
