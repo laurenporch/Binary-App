@@ -322,6 +322,9 @@ function BinaryConversion() {
             document.getElementById("para1").innerHTML = "Invalid input: \nInput can only consist of 0 and 1.";
             return;
         }
+        else {
+            document.getElementById("para1").innerHTML = "";
+        }
         if (document.getElementById("oneCheck").checked == true) {
             document.getElementById("one").value = OneComplementtoDecimal(input);
         }
@@ -337,6 +340,9 @@ function BinaryConversion() {
         if (DecimalInput(input) < 0) {
             document.getElementById("para1").innerHTML = "Invalid input: \nInput must consist of only digits.";
             return;
+        }
+        else {
+            document.getElementById("para1").innerHTML = "";
         }
         defaultSize(input);
         if (document.getElementById("oneCheck").checked == true) {
